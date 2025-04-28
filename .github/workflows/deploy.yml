@@ -1,35 +1,24 @@
-name: deploy changes
+name: Deploy Vite App to GitHub Pages
 
 on:
   push:
     branches:
-      - main
+      - main  # Eller vilken branch du jobbar på
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node-version: [20]
-
-    permissions:
-      contents: write  
-      pages: write  
-      id-token: write 
-      
     steps:
-      - uses: actions/checkout@v3
-        with:
-          fetch-depth: 0
+      - name: Checkout
+        uses: actions/checkout@v3
 
-      - name: Use Node.js ${{ matrix.node-version }}
+      - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: ${{ matrix.node-version }}
-          cache: npm
+          node-version: 18  # eller den version du använder
 
       - name: Install dependencies
-        run: npm install --no-frozen-lockfile
+        run: npm install
 
       - name: Build
         run: npm run build
@@ -38,4 +27,4 @@ jobs:
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: dist
+          publish_dir: ./dist
