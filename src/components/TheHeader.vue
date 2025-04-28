@@ -25,7 +25,7 @@ const hoverImg = new URL('../img/home-logo-blink.png', import.meta.url).href
   loading="eager"
   />
 
-  <div>
+  <div class="cart">
     <button class="cart-button">
       <span class="material-symbols-outlined">
         shopping_cart
@@ -41,6 +41,7 @@ const hoverImg = new URL('../img/home-logo-blink.png', import.meta.url).href
   <nav>
     <button class="menu-button" aria-label="Open menu button" aria-expanded="false">
       <span class="menu-span"></span>
+      <span class="menu">meny</span>
       <span class="menu-span"></span>
       <span class="menu-span"></span>
     </button>
@@ -71,16 +72,34 @@ h1 {
 
 .menu-span {
   display: block;
-  width: 40px;
-  height: 5px;
-  background-color: black;
-  border-radius: 1rem;
-  margin-bottom: 0.25rem;
+  height: 4px;
+  width: 24px;
+  background-color: hotpink;
+  border-radius: 9999px;
+  margin-top: 6px;
+  transition: all 0.3s ease; /* smooth animation */
 }
 
 .menu-button {
-  background-color: whitesmoke;
+  position: relative;
+  margin-right: 2rem;
+  background: none;
   border: none;
+  cursor: pointer;
+}
+
+
+/* Hover effekt på hela knappen */
+.menu-button:hover .menu-span:nth-child(1) {
+  transform: translateX(-8px); /* förflyttar första strecket till vänster */
+}
+
+.menu-button:hover .menu-span:nth-child(3) {
+  opacity: 0.5; /* andra strecket blir lite genomskinligt */
+}
+
+.menu-button:hover .menu-span:nth-child(4) {
+  transform: translateX(-16px); /* tredje strecket flyttas ännu mer */
 }
 
 .cart-button {
@@ -95,6 +114,11 @@ h1 {
 
 .logo-image {
   padding: 0.5rem;
+}
+
+.cart {
+  display: flex;
+  align-items: center;
 }
 
 </style>
