@@ -13,7 +13,7 @@ footer {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 200px;
+    min-height: 20vh;
     background-color: lightblue;
 }
 

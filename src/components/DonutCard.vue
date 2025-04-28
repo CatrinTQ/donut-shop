@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { cart } from '@/stores/cart';
 import { products } from '@/data/products';
 
 function printRatingStar(rating: number): string {
@@ -16,41 +17,79 @@ function printRatingStar(rating: number): string {
 
   return stars;
 }
+
+// ➕ Lägg till produkt i varukorgen
+function increaseAmount(productId: number) {
+  const productInCart = cart.value.find(item => item.id === productId);
+
+  if (productInCart) {
+    productInCart.amount += 1;
+  } else {
+    const product = products.find(item => item.id === productId);
+    if (product) {
+      cart.value.push({
+        id: product.id,
+        name: product.name,
+        price: product.price,
+        amount: 1,
+      });
+    }
+  }
+}
+
+// ➖ Minska produkt i varukorgen
+function decreaseAmount(productId: number) {
+  const productInCart = cart.value.find(item => item.id === productId);
+
+  if (productInCart) {
+    productInCart.amount -= 1;
+    if (productInCart.amount === 0) {
+      cart.value = cart.value.filter(item => item.id !== productId);
+    }
+  }
+}
+
+// Hämta hur många av en viss produkt som finns i varukorgen
+function getAmount(productId: number) {
+  const productInCart = cart.value.find(item => item.id === productId);
+  return productInCart ? productInCart.amount : 0;
+}
 </script>
 
 <template>
-    <div class="cards-container">
-        <div class="card" v-for="donut in products" :key="donut.id">
-            <img :src="donut.img.url" :width="donut.img.width" :height="donut.img.height">        
-            <div>
-                <h2>{{ donut.name }}</h2>
-                <p>Pris: {{ donut.price }}</p>
-                <p class="rating">Betyg: <span v-html="printRatingStar(donut.rating)"></span></p>
-                <div class="button-container">
-                    <button class="product-button">-</button>
-                    <p class="amount">0 st</p>
-                    <button class="product-button">+</button>
-                </div>
-            </div>
+  <div class="cards-container">
+    <div class="card" v-for="donut in products" :key="donut.id">
+      <img :src="donut.img.url" :width="donut.img.width" :height="donut.img.height" />
+      <div>
+        <h2>{{ donut.name }}</h2>
+        <p>Pris: {{ donut.price }} kr</p>
+        <p class="rating">
+          Betyg: <span v-html="printRatingStar(donut.rating)"></span>
+        </p>
+        <div class="button-container">
+          <button class="product-button" @click="decreaseAmount(donut.id)">-</button>
+          <p class="amount">{{ getAmount(donut.id) }} st</p>
+          <button class="product-button" @click="increaseAmount(donut.id)">+</button>
         </div>
+      </div>
     </div>
-
+  </div>
 </template>
+
 
 <style scoped>
 .cards-container {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   gap: 1rem;
-  justify-content: start; /* 👈 detta gör sista raden vänsterjusterad */
+  justify-content: start;
   padding: 2rem;
 }
 
 .card {
   display: grid;
-  grid-template-columns: 1fr 1fr; /* Två kolumner: text och bild */
+  grid-template-columns: 1fr 1fr;
   align-items: center;
-  border: 1px solid black;
   border-radius: 10px;
   padding: 1rem;
   max-width: 300px;

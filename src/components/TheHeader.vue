@@ -1,51 +1,67 @@
 <script setup lang="ts">
 import { ref } from 'vue'
+import { useRouter } from 'vue-router'
+import { cart } from '@/stores/cart';
+import { computed } from 'vue';
 
 const isHovered = ref(false)
 
 const defaultImg = new URL('../img/home-logo.png', import.meta.url).href
 const hoverImg = new URL('../img/home-logo-blink.png', import.meta.url).href 
+const router = useRouter()
 
+// Beräkna totalsumman
+const totalPrice = computed(() => {
+  return cart.value.reduce((sum, item) => sum + item.price * item.amount, 0);
+});
+
+function goToHome() {
+  router.push('/') // Navigera till startsidan
+}
 </script>
 
 <template>
 <header>
   <h1>Kawaii Donut</h1>
 
-  <img
-  :src="isHovered ? hoverImg : defaultImg"
-  @mouseenter="isHovered = true"
-  @mouseleave="isHovered = false"
-
-  id="logo"
-  class="logo-image"
-  alt="tecknad munk med rosa frosting som ler."
-  width="150"
-  height="150"
-  loading="eager"
-  />
-
+    <img
+    :src="isHovered ? hoverImg : defaultImg"
+    @mouseenter="isHovered = true"
+    @mouseleave="isHovered = false"
+  
+    id="logo"
+    class="logo-image"
+    alt="tecknad munk med rosa frosting som ler."
+    width="150"
+    height="150"
+    loading="eager"
+    @click="goToHome"
+    />
   <div class="cart">
+  <router-link to="/cart">
     <button class="cart-button">
       <span class="material-symbols-outlined">
         shopping_cart
       </span>
     </button>
+  </router-link>
 
     <span>
-      0 kr
+      {{ totalPrice }} kr
     </span>
   </div>
 
   <!-- Menu Button -->
-  <nav>
-    <button class="menu-button" aria-label="Open menu button" aria-expanded="false">
-      <span class="menu-span"></span>
-      <span class="menu">meny</span>
-      <span class="menu-span"></span>
-      <span class="menu-span"></span>
-    </button>
-  </nav>
+   <router-link to="/menu">
+     <nav>
+       <button class="menu-button" aria-label="Open menu button" aria-expanded="false">
+         <span class="menu-span"></span>
+         <span class="menu">meny</span>
+         <span class="menu-span"></span>
+         <span class="menu-span"></span>
+       </button>
+     </nav>
+   </router-link>
 
 </header>
 </template>
@@ -61,6 +77,7 @@ header {
   color: hotpink;
   margin: 0;
   padding: 0;
+  min-height: 20vh;
 }
 
 h1 {
@@ -105,6 +122,7 @@ h1 {
 .cart-button {
   border: none;
   background-color: whitesmoke;
+  cursor: pointer;
 }
 
 .material-symbols-outlined {
@@ -114,7 +132,9 @@ h1 {
 
 .logo-image {
   padding: 0.5rem;
+  cursor: pointer;
 }
+
 
 .cart {
   display: flex;
