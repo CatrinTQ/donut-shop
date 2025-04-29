@@ -1,5 +1,5 @@
 <template>
-    <img src="../img/background.png" />
+    <img src="/donut-shop/img/background.png" />
 </template>
 
 <style lang="css" scoped>

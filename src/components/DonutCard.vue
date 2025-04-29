@@ -8,11 +8,11 @@ function printRatingStar(rating: number): string {
   let stars = '';
 
   for (let i = 0; i < fullStars; i++) {
-    stars += `<img src="./src/img/rating-donut.png" width="20" height="20" alt="rating star shaped like a donut" />`;
+    stars += `<img src="/donut-shop/img/rating-donut.png" width="20" height="20" alt="rating star shaped like a donut" />`;
   }
 
   if (hasHalfStar) {
-    stars += `<img src="./src/img/rating-donut-half.png" width="20" height="20" alt="half rating star shaped like a donut" />`;
+    stars += `<img src="/donut-shop/img/rating-donut-half.png" width="20" height="20" alt="half rating star shaped like a donut" />`;
   }
 
   return stars;

@@ -6,8 +6,9 @@ import { computed } from 'vue';
 
 const isHovered = ref(false)
 
-const defaultImg = new URL('../img/home-logo.png', import.meta.url).href
-const hoverImg = new URL('../img/home-logo-blink.png', import.meta.url).href 
+const defaultImg = '/donut-shop/img/home-logo.png'
+const hoverImg = '/donut-shop/img/home-logo-blink.png'
+
 const router = useRouter()
 
 // Beräkna totalsumman
