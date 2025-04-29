@@ -22,7 +22,7 @@ export const products: Product[] = [
       amount: 0,
       category: 'animal',
       img: {
-        url: 'img/product-image-1.png',
+        url: 'product-image-1.png',
         width: 120,
         height: 120,
         alt: 'munk med frosting som föreställer en tiger'
