@@ -22,7 +22,7 @@ export const products: Product[] = [
       amount: 0,
       category: 'animal',
       img: {
-        url: '/donut-shop/public/img/product-image-1.png',
+        url: 'img/product-image-1.png',
         width: 120,
         height: 120,
         alt: 'munk med frosting som föreställer en tiger'
@@ -36,7 +36,7 @@ export const products: Product[] = [
       amount: 0,
       category: 'animal',
       img: {
-        url: '/donut-shop/img/product-image-2.png',
+        url: 'img/product-image-2.png',
         width: 120,
         height: 120,
         alt: 'munk med frosting som föreställer ett snölejon'
@@ -50,7 +50,7 @@ export const products: Product[] = [
       amount: 0,
       category: 'animal',
       img: {
-        url: '/donut-shop/img/product-image-3.png',
+        url: 'img/product-image-3.png',
         width: 120,
         height: 120,
         alt: 'munk med frosting som föreställer een blå tigen'
@@ -64,7 +64,7 @@ export const products: Product[] = [
       amount: 0,
       category: 'animal',
       img: {
-        url: '/donut-shop/img/product-image-4.png',
+        url: 'img/product-image-4.png',
         width: 120,
         height: 120,
         alt: 'munk med frosting som föreställer en kanin'
@@ -78,7 +78,7 @@ export const products: Product[] = [
       amount: 0,
       category: 'special',
       img: {
-        url: '/donut-shop/img/product-image-5.png',
+        url: 'img/product-image-5.png',
         width: 120,
         height: 120,
         alt: 'munk med matchasmak'
@@ -92,7 +92,7 @@ export const products: Product[] = [
       amount: 0,
       category: 'animal',
       img: {
-        url: '/donut-shop/img/product-image-6.png',
+        url: 'img/product-image-6.png',
         width: 120,
         height: 120,
         alt: 'munk med frosting som föreställer en dinosaurie'
@@ -106,7 +106,7 @@ export const products: Product[] = [
       amount: 0,
       category: 'special',
       img: {
-        url: '/donut-shop/img/product-image-7.png',
+        url: 'img/product-image-7.png',
         width: 120,
         height: 120,
         alt: 'munk med persikosmak'
@@ -120,7 +120,7 @@ export const products: Product[] = [
       amount: 0,
       category: 'animal',
       img: {
-        url: '/donut-shop/img/product-image-8.png',
+        url: 'img/product-image-8.png',
         width: 120,
         height: 120,
         alt: 'munk med frosting som föreställer ett spöke'
@@ -134,7 +134,7 @@ export const products: Product[] = [
       amount: 0,
       category: 'animal',
       img: {
-        url: '/donut-shop/img/product-image-9.png',
+        url: 'img/product-image-9.png',
         width: 120,
         height: 120,
         alt: 'munk med frosting som föreställer en gris'
@@ -148,7 +148,7 @@ export const products: Product[] = [
       amount: 0,
       category: 'animal',
       img: {
-        url: '/donut-shop/img/product-image-10.png',
+        url: 'img/product-image-10.png',
         width: 120,
         height: 120,
         alt: 'pokémon inspirerad munk'
@@ -162,7 +162,7 @@ export const products: Product[] = [
       amount: 0,
       category: 'space',
       img: {
-        url: '/donut-shop/img/product-image-11.png',
+        url: 'img/product-image-11.png',
         width: 120,
         height: 120,
         alt: 'donut looking lika a nebula'
@@ -176,7 +176,7 @@ export const products: Product[] = [
       amount: 0,
       category: 'animal',
       img: {
-        url: '/donut-shop/img/product-image-12.png',
+        url: 'img/product-image-12.png',
         width: 120,
         height: 120,
         alt: 'munk med frosting som föreställer en björn'
@@ -190,7 +190,7 @@ export const products: Product[] = [
       amount: 0,
       category: 'space',
       img: {
-        url: '/donut-shop/img/product-image-13.png',
+        url: 'img/product-image-13.png',
         width: 120,
         height: 120,
         alt: 'munk med frosting som föreställer vintergatan'
@@ -204,7 +204,7 @@ export const products: Product[] = [
       amount: 0,
       category: 'space',
       img: {
-        url: '/donut-shop/img/product-image-14.png',
+        url: 'img/product-image-14.png',
         width: 120,
         height: 120,
         alt: 'munk med frosting som föreställer ett meteorregn'

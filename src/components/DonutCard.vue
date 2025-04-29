@@ -2,17 +2,18 @@
 import { cart } from '@/stores/cart';
 import { products } from '@/data/products';
 
+
 function printRatingStar(rating: number): string {
   const fullStars = Math.floor(rating);
   const hasHalfStar = rating % 1 !== 0;
   let stars = '';
 
   for (let i = 0; i < fullStars; i++) {
-    stars += `<img src="/donut-shop/public/img/rating-donut.png" width="20" height="20" alt="rating star shaped like a donut" />`;
+    stars += `<img src="img/rating-donut.png" width="20" height="20" alt="rating star shaped like a donut" />`;
   }
 
   if (hasHalfStar) {
-    stars += `<img src="/donut-shop/public/img/rating-donut-half.png" width="20" height="20" alt="half rating star shaped like a donut" />`;
+    stars += `<img src="img/rating-donut-half.png" width="20" height="20" alt="half rating star shaped like a donut" />`;
   }
 
   return stars;
