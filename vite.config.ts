@@ -9,7 +9,7 @@ export default defineConfig({
   base: '/donut-shop/',
   plugins: [
     vue(),
-    vueDevTools(),
+    vueDevTools()
   ],
   resolve: {
     alias: {
