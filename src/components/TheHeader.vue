@@ -3,6 +3,7 @@ import { ref } from 'vue'
 import { useRouter } from 'vue-router'
 import { cart } from '@/stores/cart';
 import { computed } from 'vue';
+import CartIconBadge from './cartIconBadge.vue';
 
 const isHovered = ref(false)
 
@@ -19,6 +20,7 @@ const totalPrice = computed(() => {
 function goToHome() {
   router.push('/') // Navigera till startsidan
 }
+
 </script>
 
 <template>
@@ -39,14 +41,7 @@ function goToHome() {
     @click="goToHome"
     />
   <div class="cart">
-  <router-link to="/cart">
-    <button class="cart-button">
-      <span class="material-symbols-outlined">
-        shopping_cart
-      </span>
-    </button>
-  </router-link>
-
+    <CartIconBadge />
     <span>
       {{ totalPrice }} kr
     </span>
