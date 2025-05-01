@@ -25,7 +25,7 @@ function goToHome() {
 
 <template>
 <header>
-  <h1>Kawaii Donut</h1>
+  <h1>Kawaii Donut :)</h1>
 
     <img
     :src="isHovered ? hoverImg : defaultImg"
