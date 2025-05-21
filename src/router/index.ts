@@ -4,7 +4,6 @@ import StartView from '@/views/StartView.vue'
 import CartView from '@/views/CartView.vue'
 import FormView from '@/views/FormView.vue'
 import OrderConfirmation from '@/views/OrderConfirmation.vue'
-import MenuView from '@/views/MenuView.vue'
 
 const routes = [
   {
@@ -26,11 +25,6 @@ const routes = [
     path: '/confirmation',
     name: 'confirmation',
     component: OrderConfirmation
-  },
-  {
-    path: '/menu',
-    name: 'menu',
-    component: MenuView
   }
 ]
 

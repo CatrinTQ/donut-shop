@@ -1,69 +1,64 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref, computed } from 'vue'
 import { useRouter } from 'vue-router'
-import { cart } from '@/stores/cart';
-import { computed } from 'vue';
-import CartIconBadge from './cartIconBadge.vue';
+import { cart } from '@/stores/cart'
+import CartIconBadge from './CartIconBadge.vue'
+import SidebarMenu from './SidebarMenu.vue'
 
 const isHovered = ref(false)
+const isMenuOpen = ref(false)
 
 const defaultImg = '/donut-shop/img/home-logo.png'
 const hoverImg = '/donut-shop/img/home-logo-blink.png'
 
 const router = useRouter()
 
-// Beräkna totalsumman
 const totalPrice = computed(() => {
-  return cart.value.reduce((sum, item) => sum + item.price * item.amount, 0);
-});
+  return cart.value.reduce((sum, item) => sum + item.price * item.amount, 0)
+})
 
 function goToHome() {
-  router.push('/') // Navigera till startsidan
+  router.push('/')
 }
-
 </script>
 
 <template>
-<header>
-  <h1>Kawaii Donut :)</h1>
-
+  <header>
     <img
-    :src="isHovered ? hoverImg : defaultImg"
-    @mouseenter="isHovered = true"
-    @mouseleave="isHovered = false"
-  
-    id="logo"
-    class="logo-image"
-    alt="tecknad munk med rosa frosting som ler."
-    width="150"
-    height="150"
-    loading="eager"
-    @click="goToHome"
+      :src="isHovered ? hoverImg : defaultImg"
+      @mouseenter="isHovered = true"
+      @mouseleave="isHovered = false"
+      id="logo"
+      class="logo-image"
+      alt="tecknad munk med rosa frosting som ler."
+      width="150"
+      height="150"
+      loading="eager"
+      @click="goToHome"
     />
-  <div class="cart">
-    <CartIconBadge />
-    <span>
-      {{ totalPrice }} kr
-    </span>
-  </div>
 
-  <!-- Menu Button -->
-   <router-link to="/menu">
-     <nav>
-       <button class="menu-button" aria-label="Open menu button" aria-expanded="false">
-         <span class="menu-span"></span>
-         <span class="menu">meny</span>
-         <span class="menu-span"></span>
-         <span class="menu-span"></span>
-       </button>
-     </nav>
-   </router-link>
+    <div class="cart">
+      <CartIconBadge />
+      <span>{{ totalPrice }} kr</span>
+    </div>
 
-</header>
+    <!-- Menyknapp -->
+    <button
+      class="menu-button"
+      aria-label="Open menu"
+      @click="isMenuOpen = true"
+    >
+      <span class="menu-span"></span>
+      <span class="menu-span"></span>
+      <span class="menu-span"></span>
+    </button>
+  </header>
+
+  <!-- Sidomeny-komponent med fade-in/out -->
+  <SidebarMenu :show="isMenuOpen" @closed="isMenuOpen = false" />
 </template>
 
 <style scoped>
-
 header {
   display: flex;
   flex-wrap: wrap;
@@ -74,56 +69,41 @@ header {
   margin: 0;
   padding: 0;
   min-height: 20vh;
-}
-
-h1 {
-  margin: 0;
-  padding: 0;
-  min-width: 100vw;
-  text-align: center;
+  position: relative;
+  z-index: 10;
 }
 
 .menu-span {
   display: block;
   height: 4px;
-  width: 24px;
+  width: 40px;
   background-color: hotpink;
   border-radius: 9999px;
   margin-top: 6px;
-  transition: all 0.3s ease; /* smooth animation */
+  transition: all 0.3s ease;
 }
 
 .menu-button {
   position: relative;
+  margin-top: 2px;
   margin-right: 2rem;
   background: none;
   border: none;
   cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-
-/* Hover effekt på hela knappen */
 .menu-button:hover .menu-span:nth-child(1) {
-  transform: translateX(-8px); /* förflyttar första strecket till vänster */
+  transform: translateX(-8px);
 }
-
+.menu-button:hover .menu-span:nth-child(2) {
+  opacity: 0.5;
+}
 .menu-button:hover .menu-span:nth-child(3) {
-  opacity: 0.5; /* andra strecket blir lite genomskinligt */
-}
-
-.menu-button:hover .menu-span:nth-child(4) {
-  transform: translateX(-16px); /* tredje strecket flyttas ännu mer */
-}
-
-.cart-button {
-  border: none;
-  background-color: whitesmoke;
-  cursor: pointer;
-}
-
-.material-symbols-outlined {
-  padding: 0;
-  margin: 0;
+  transform: translateX(-16px);
+  
 }
 
 .logo-image {
@@ -131,10 +111,8 @@ h1 {
   cursor: pointer;
 }
 
-
 .cart {
   display: flex;
   align-items: center;
 }
-
 </style>

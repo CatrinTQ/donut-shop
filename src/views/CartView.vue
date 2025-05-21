@@ -15,9 +15,9 @@ const totalItems = computed(() => {
 
 <template>
   <div class="cart-container">
-    <h1>Varukorg</h1>
-
+    
     <div v-if="cart.length > 0">
+      <h2>Varukorg</h2>
       <ul>
         <li v-for="item in cart" :key="item.id">
           {{ item.name }} - {{ item.amount }} st - {{ item.price * item.amount }} kr
@@ -25,8 +25,9 @@ const totalItems = computed(() => {
       </ul>
 
       <div class="summary">
-        <p><strong>Totalt antal produkter:</strong> {{ totalItems }}</p>
-        <p><strong>Totalt pris:</strong> {{ totalPrice }} kr</p>
+        <p><strong>Totalt antal produkter:</strong> {{ totalItems }} st</p>
+        <p><strong>Frakt:</strong> 50 kr</p>
+        <p><strong>Totalt pris:</strong> {{ totalPrice + 50 }} kr</p>
       </div>
 
       <router-link to="/Form">
@@ -43,13 +44,41 @@ const totalItems = computed(() => {
 <style scoped>
 .cart-container {
     min-height: 60vh;
-    margin-left: 200px;
     padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
 }
 
 .summary {
   margin-top: 2rem;
   font-size: 1.2rem;
   font-weight: bold;
+}
+
+h2 {
+  margin-bottom: 2rem;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+
+button {
+    padding: 0.8rem 1.5rem;
+    background-color: hotpink;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 2rem;
+    align-self: center;
+}
+
+button:hover {
+    background-color: #ff3399;
 }
 </style>
